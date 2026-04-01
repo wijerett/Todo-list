@@ -2,9 +2,16 @@ import "./confirm.js";
 import { confirmButton } from "./confirm.js";
 import { loadOpen } from "./open.js";
 import { newTile } from "./tile.js";
-
+import "./getNotes.js";
+import { addToProject } from "./projects.js";
 
 export function newBlock() {
+
+  const noteCreate = document.createElement('h3');
+  noteCreate.classList.add('noteCreate');
+  noteCreate.innerHTML = ("Create a new project name or use an existing project name to add a new note to that project");
+  
+
   const content = document.getElementById('content');
   const block = document.createElement('div');
   block.classList.add('block');
@@ -15,7 +22,7 @@ export function newBlock() {
   block.appendChild(titleBox);
   const titleLabel = document.createElement('label');
   titleLabel.setAttribute("for", "titlebox");
-  titleLabel.textContent = "Title";
+  titleLabel.textContent = "Project Title";
   block.appendChild(titleLabel);
   
 
@@ -29,14 +36,6 @@ export function newBlock() {
   descLabel.textContent = "Note Description";
   block.appendChild(descLabel);
 
-  //const creationDate = document.createElement('input');
-  //creationDate.classList.add('create');
-  //creationDate.setAttribute("id", "create");
-  //block.appendChild(creationDate);
-  //const createLabel = document.createElement('label');
-  //createLabel.setAttribute("for", "create");
-  //createLabel.textContent = "Due Date";
-  //block.appendChild(createLabel);
 
   const notes = document.createElement('input');
   notes.classList.add('notes');
@@ -91,11 +90,13 @@ export function newBlock() {
 
   const confirmBtn = confirmButton();
   confirmBtn.addEventListener('click', () => {
+    addToProject();
     newTile();
     content.innerHTML = "";
     loadOpen();
   });
   
+  content.appendChild(noteCreate);
   content.appendChild(block);
   content.appendChild(priorityRad);
   content.appendChild(confirmBtn);

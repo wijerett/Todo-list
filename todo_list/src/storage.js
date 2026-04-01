@@ -1,7 +1,8 @@
+import { getNotesArray } from "./getNotes.js";
 import "./tile.js";
 
 
-const tiles = document.getElementById("tiles");
+
 
 
 
@@ -25,19 +26,42 @@ export function storageAvailable(type) {
 }
 
 export function loStore() {
-  const data = localStorage.getItem("note");
-  if (!data) return;
-  const notesArray = JSON.parse(data);
+  const tiles = document.getElementById("tiles");
   tiles.innerHTML = "";
 
-  notesArray.forEach(noteValues => {
-    const postIt = document.createElement('div');
-    postIt.classList.add('post');
-    noteValues.forEach(val => {
-      const p = document.createElement('p');
-      p.textContent = val;
-      postIt.appendChild(p);
+  const projects = JSON.parse(localStorage.getItem("projects")) || [];
+
+  projects.forEach(project => {
+    const projectDiv = document.createElement('div');
+    projectDiv.classList.add('project');
+
+    const projectTitle = document.createElement('h2');
+    projectTitle.classList.add('projectHead');
+    projectTitle.textContent = project.name;
+    projectTitle.style.cursor = "pointer";
+    projectDiv.appendChild(projectTitle);
+
+
+    const notesContainer = document.createElement('div');
+    notesContainer.style.display = "none";
+
+    if (Array.isArray(project.notes)) {
+      project.notes.forEach(noteValues => {
+        if (!Array.isArray(noteValues)) return;
+        const postIt = document.createElement('div');
+        postIt.classList.add('post');
+        noteValues.forEach(val => {
+          const p = document.createElement('p');
+          p.textContent = val;
+          postIt.appendChild(p);
+      });
+      notesContainer.appendChild(postIt);
+      });
+    }
+    projectTitle.addEventListener('click', () => {
+      notesContainer.style.display = notesContainer.style.display === "none" ? "block" : "none";
     });
-    tiles.appendChild(postIt);
+    projectDiv.appendChild(notesContainer);
+    tiles.appendChild(projectDiv);
   });
 };

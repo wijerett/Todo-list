@@ -3,18 +3,15 @@ import "./home.js";
 import "./storage.js";
 import { confirmButton } from "./confirm.js";
 import { getCurrentDate } from "./date.js";
-
-
+import "./getNotes.js";
+import { addToProject } from "./projects.js";
 
 var radioValue = "";
 
-let noteStorage = [];
 
 
 export function newTile() {
-
-  //create tile element and load independently of other html elements
-
+  
   const title = document.getElementById('titlebox');
   const description = document.getElementById('desc');
 
@@ -28,14 +25,13 @@ export function newTile() {
   const radioTwo = document.getElementById('priorityTwo');
   const radioThree = document.getElementById('priorityThree');
   const tileBox = document.getElementById('tiles');
-
-
+  const projects = document.createElement('div');
+  projects.classList.add('projects');
 
   const noteTitle = title.value;
   const desc = description.value;
   const creationDate = date;
   const addNote = notes.value;
-
 
 
   if ((radioOne).checked) {
@@ -55,9 +51,8 @@ export function newTile() {
   const postIt = document.createElement('div');
   postIt.classList.add('post');
 
-  const noteValues = [noteTitle, desc, addNote,creationDate, radioValue];
+  const noteValues = ["Title " + noteTitle, desc, addNote,"Date created " + creationDate, radioValue];
 
-  
   noteValues.forEach(val => {
     const p = document.createElement('p');
     p.textContent = val;
@@ -65,32 +60,16 @@ export function newTile() {
   });
   if (title.value.trim() &&
     description.value.trim() &&
-    //date.value.trim() &&
     notes.value.trim()
   ) {
     title.value = "";
     description.value = "";
-    //date.value = "";
     notes.value = "";
-    //tiles.appendChild(postIt);
   } else {
     alert('Please fill in all fields before confirming');
   };
 
-
-  let noteStorage = JSON.parse(localStorage.getItem("note"));
-
-
-  noteStorage.push(noteValues);
-
-
-
-
-  localStorage.setItem("note", JSON.stringify(noteStorage));
-
+  const projectName = noteTitle;
+  addToProject(projectName, noteValues);
  
-
-  console.log(noteStorage);
-  console.log(noteValues);
-  return { noteStorage };
 };

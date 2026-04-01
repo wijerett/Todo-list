@@ -6,6 +6,7 @@ import { stickyPicture } from "./sticky.js";
 
 export function loadOpen() {
 
+
   const openContent = document.createElement('div');
   openContent.classList.add("openContent");
 
@@ -30,8 +31,9 @@ export function loadOpen() {
   twoBtn.addEventListener('click', () => {
     tiles.innerHTML = "";
     content.innerHTML = "";
-    openNotes();
     loStore();
+    openNotes();
+  
   });
   twoBtn.classList.add('twoBtn');
   twoBtn.textContent = ("Go to notes");

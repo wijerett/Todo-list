@@ -3,7 +3,6 @@ body {
   display: grid;
   grid-auto-flow: row;
   justify-content: center;
-  border: 5px dotted red;
 }
 
 
@@ -56,7 +55,7 @@ label {
   margin: 20px;
   text-align: center;
   border: 2px solid black;
-  width: 200px;
+  width: 250px;
   height: 250px;
   background-color: blanchedalmond;
 }
@@ -91,4 +90,22 @@ label {
 
 .back {
   margin: 20px;
+}
+
+h2 {
+  margin: 10px;
+}
+
+.projectHead {
+  text-align: center;
+  margin: 20px;
+  border: 2px solid black;
+  background: blanchedalmond;
+  height: 50px;
+  width: 110px;
+}
+
+.noteCreate {
+  margin-left: 30px;
+  text-align: center;
 }
