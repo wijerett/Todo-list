@@ -13,12 +13,9 @@ export function newBlock() {
   noteCreate.classList.add('noteCreate');
   noteCreate.innerHTML = ("Create a new project name or use an existing project name to add a new note to that project");
   
-
   const content = document.getElementById('content');
   const block = document.createElement('div');
   block.classList.add('block');
-
-
 
   const titleBox = document.createElement('input');
   titleBox.setAttribute("id", "titlebox");
@@ -82,7 +79,7 @@ export function newBlock() {
     const projectName = titleBox.value.trim();
     const description = desc.value.trim();
     
-    addToProject(projectName, null, [], description);
+    addToProject(projectName, null, null, description);
     content.innerHTML = "";
     loadOpen();
   });

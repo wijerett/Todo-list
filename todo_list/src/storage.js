@@ -49,43 +49,39 @@ export function loStore() {
     notesContainer.style.display = "none";
 
     if (Array.isArray(project.notes)) {
-      project.notes.forEach((noteValues, noteIndex) => {
-        if (!Array.isArray(noteValues)) return;
-        const postIt = document.createElement('div');
-        postIt.classList.add('post');
-        noteValues.forEach(val => {
-          const p = document.createElement('p');
-          p.classList.add('noteDesc');
-          p.textContent = val;
-          postIt.appendChild(p);
-      });
+    project.notes.forEach((note, noteIndex) => {
+    const postIt = document.createElement('div');
+    postIt.classList.add('post');
 
-      const deleteBtn = document.createElement('button');
-      deleteBtn.textContent = "Delete Note";
-      deleteBtn.classList.add('deleteNote');
-      deleteBtn.addEventListener('click', () => {
-        const openNotes = notesContainer.style.display === "block";
+    const p = document.createElement('p');
+    p.classList.add('noteDesc');
+    p.textContent = note; // ✅ note is just a string now
+    postIt.appendChild(p);
 
-        projects[index].notes.splice(noteIndex, 1);
-        localStorage.setItem("projects", JSON.stringify(projects));
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = "Delete Note";
+    deleteBtn.classList.add('deleteNote');
+    deleteBtn.addEventListener('click', () => {
+      const openNotes = notesContainer.style.display === "block";
+      projects[index].notes.splice(noteIndex, 1);
+      localStorage.setItem("projects", JSON.stringify(projects));
+      loStore();
 
-        loStore();
+      if (openNotes) {
+        setTimeout(() => {
+          const tiles = document.getElementById("tiles");
+          const projectDivs = tiles.getElementsByClassName('project');
+          if (projectDivs[index]) {
+            const notesContainers = projectDivs[index].getElementsByTagName('div');
+            if (notesContainers[0]) notesContainers[0].style.display = "block";
+          }
+        }, 0);
+      }
+    });
 
-        if (openNotes) {
-          setTimeout(() => {
-            const tiles = document.getElementById("tiles");
-            const projectDivs = tiles.getElementsByClassName('project');
-            if (projectDivs[index]) {
-              const notesContainers = projectDivs[index].getElementsByTagName('div');
-              if (notesContainers[0]) notesContainers[0].style.display = "block";
-            }
-          }, 0);
-        }
-      });
-
-      postIt.appendChild(deleteBtn);
-      notesContainer.appendChild(postIt);
-      });
+    postIt.appendChild(deleteBtn);
+    notesContainer.appendChild(postIt);
+    });
     }
     projectTitle.addEventListener('click', () => {
       notesContainer.style.display = notesContainer.style.display === "none" ? "block" : "none";

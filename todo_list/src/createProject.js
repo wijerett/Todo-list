@@ -29,7 +29,7 @@ export function createNewProject() {
     selectBox.appendChild(option);
   });
 
-  const notes = document.createElement('input');
+  const notes = document.createElement('textarea');
   notes.classList.add('notes');
   notes.setAttribute("id", "notesTwo");
   block.appendChild(notes);

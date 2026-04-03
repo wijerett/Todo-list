@@ -67,8 +67,6 @@ label {
   width: 300px;
 }
 
-
-
 .openBox {
   display: flex;
   align-items: center;
@@ -155,4 +153,9 @@ h2 {
 
 .projectRadio, .projectDesc {
   margin: 0;
+}
+
+.notes {
+  height: 100px;
+  padding: 0;
 }
