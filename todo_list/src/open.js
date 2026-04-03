@@ -2,10 +2,14 @@ import { newBlock } from "./home.js";
 import { loStore } from "./storage.js";
 import { openNotes } from "./gotonotes.js";
 import { stickyPicture } from "./sticky.js";
+import { createNewProject } from "./createProject.js";
 
 
 export function loadOpen() {
-
+  const openHead = document.createElement('h2');
+  openHead.classList.add('openHead');
+  openHead.innerHTML = "To-do List";
+  
 
   const openContent = document.createElement('div');
   openContent.classList.add("openContent");
@@ -16,7 +20,7 @@ export function loadOpen() {
   const boxOne = document.createElement('div');
   const oneBtn = document.createElement('button');
   oneBtn.classList.add('oneBtn');
-  oneBtn.textContent = ("Add a new note");
+  oneBtn.textContent = ("Create a new project");
   boxOne.classList.add('boxOne');
   boxOne.appendChild(oneBtn);
   oneBtn.addEventListener('click', () => {
@@ -31,19 +35,24 @@ export function loadOpen() {
   twoBtn.addEventListener('click', () => {
     tiles.innerHTML = "";
     content.innerHTML = "";
-    loStore();
     openNotes();
-  
+    createNewProject();
   });
   twoBtn.classList.add('twoBtn');
-  twoBtn.textContent = ("Go to notes");
+  twoBtn.textContent = ("Create a new note");
   boxTwo.classList.add('boxTwo');
   boxTwo.appendChild(twoBtn);
   
   const boxThree = document.createElement('div');
   const threeBtn = document.createElement('button');
+  threeBtn.addEventListener('click', () => {
+    tiles.innerHTML = "";
+    content.innerHTML = "";
+    loStore();
+    openNotes();
+  });
   threeBtn.classList.add('threeBtn');
-  threeBtn.textContent = ("Go to last note");
+  threeBtn.textContent = ("Go to Project List");
   boxThree.classList.add('boxThree');
   boxThree.appendChild(threeBtn);
 
@@ -54,7 +63,8 @@ export function loadOpen() {
   openBox.appendChild(boxOne);
   openBox.appendChild(boxTwo);
   openBox.appendChild(boxThree);
-
+  
+  openContent.appendChild(openHead);
   openContent.appendChild(openBox);
   content.appendChild(openContent);
 

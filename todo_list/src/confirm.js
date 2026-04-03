@@ -2,7 +2,7 @@ import { newBlock } from "./home.js";
 
 export function confirmButton() {
   const confirmBtn = document.createElement('button');
-  confirmBtn.textContent = ("Add Note");
+  confirmBtn.textContent = ("Confirm");
   confirmBtn.classList.add('confirmBtn');
   return confirmBtn;
   

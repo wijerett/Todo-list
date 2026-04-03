@@ -13,12 +13,8 @@ var radioValue = "";
 export function newTile() {
   
   const title = document.getElementById('titlebox');
-  const description = document.getElementById('desc');
-
-
+  //const description = document.getElementById('desc');
   const date = getCurrentDate();
-
-
   const notes = document.getElementById('notes');
   const tiles = document.getElementById('tiles');
   const radioOne = document.getElementById('priorityOne');
@@ -31,8 +27,6 @@ export function newTile() {
   const noteTitle = title.value;
   const desc = description.value;
   const creationDate = date;
-  const addNote = notes.value;
-
 
   if ((radioOne).checked) {
     radioValue = "Top Priority";
@@ -46,12 +40,13 @@ export function newTile() {
   } else if ((radioOne).checked === false && (radioTwo).checked === false && (radioThree).checked === false) {
     alert('Please check a priority before confirming');
     return;
-  }
+  };
+
   
   const postIt = document.createElement('div');
   postIt.classList.add('post');
 
-  const noteValues = ["Title " + noteTitle, desc, addNote,"Date created " + creationDate, radioValue];
+  const noteValues = ["Title:  " + noteTitle, "Date created:  " + creationDate, radioValue];
 
   noteValues.forEach(val => {
     const p = document.createElement('p');
@@ -59,17 +54,17 @@ export function newTile() {
     postIt.appendChild(p);
   });
   if (title.value.trim() &&
-    description.value.trim() &&
-    notes.value.trim()
+    description.value.trim()
   ) {
     title.value = "";
     description.value = "";
-    notes.value = "";
   } else {
     alert('Please fill in all fields before confirming');
   };
 
-  const projectName = noteTitle;
-  addToProject(projectName, noteValues);
+
+
+  const projectName = title.value;
+  addToProject(projectName, noteValues, desc);
  
 };

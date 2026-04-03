@@ -7,6 +7,8 @@ import { addToProject } from "./projects.js";
 
 export function newBlock() {
 
+  //Create a new project
+
   const noteCreate = document.createElement('h3');
   noteCreate.classList.add('noteCreate');
   noteCreate.innerHTML = ("Create a new project name or use an existing project name to add a new note to that project");
@@ -16,6 +18,8 @@ export function newBlock() {
   const block = document.createElement('div');
   block.classList.add('block');
 
+
+
   const titleBox = document.createElement('input');
   titleBox.setAttribute("id", "titlebox");
   titleBox.classList.add('titlebox');
@@ -24,8 +28,6 @@ export function newBlock() {
   titleLabel.setAttribute("for", "titlebox");
   titleLabel.textContent = "Project Title";
   block.appendChild(titleLabel);
-  
-
 
   const desc = document.createElement('input');
   desc.classList.add('desc');
@@ -33,24 +35,11 @@ export function newBlock() {
   block.appendChild(desc);
   const descLabel = document.createElement('label');
   descLabel.setAttribute("for", "desc");
-  descLabel.textContent = "Note Description";
+  descLabel.textContent = "Project Description";
   block.appendChild(descLabel);
-
-
-  const notes = document.createElement('input');
-  notes.classList.add('notes');
-  notes.setAttribute("id", "notes");
-  block.appendChild(notes);
-  const notesLabel = document.createElement('label');
-  notesLabel.setAttribute("for", "notes");
-  notesLabel.textContent = "Additional Notes";
-  block.appendChild(notesLabel);
-
-
 
   const priorityRad = document.createElement('div');
   priorityRad.classList.add('radioBox');
-
 
   const priorityOne = document.createElement('input');
   priorityOne.type = 'radio';
@@ -90,8 +79,10 @@ export function newBlock() {
 
   const confirmBtn = confirmButton();
   confirmBtn.addEventListener('click', () => {
-    addToProject();
-    newTile();
+    const projectName = titleBox.value.trim();
+    const description = desc.value.trim();
+    
+    addToProject(projectName, null, [], description);
     content.innerHTML = "";
     loadOpen();
   });

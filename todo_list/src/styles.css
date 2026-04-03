@@ -1,5 +1,5 @@
 body {
-  background: darkslategray;
+  background: darkcyan;
   display: grid;
   grid-auto-flow: row;
   justify-content: center;
@@ -11,10 +11,9 @@ body {
   display: grid;
   grid-template-columns: 1fr 2fr;
   width: 25vw;
-  
 }
 
-.titlebox, .desc, .create, .notes {
+.titlebox, .desc, .create, .notes, .selectBox {
   width: 200px;
   margin: 20px;
 }
@@ -52,13 +51,23 @@ label {
 }
 
 .post {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   margin: 20px;
-  text-align: center;
   border: 2px solid black;
-  width: 250px;
-  height: 250px;
-  background-color: blanchedalmond;
+  background:blanchedalmond;
+  height: 300px;
+  width: 300px;
 }
+
+.noteDesc {
+  text-align: center;
+  width: 300px;
+}
+
+
 
 .openBox {
   display: flex;
@@ -77,6 +86,12 @@ label {
 .confirmBtn {
   width: 100px;
   margin: 20px;
+  border-radius: 15px;
+}
+
+.openHead {
+  text-align: center;
+  margin-bottom: 80px;
 }
 
 .sticky {
@@ -85,11 +100,19 @@ label {
 }
 
 .boxOne, .boxTwo, .boxThree {
-  width: 100px;
+  width: 200px;
+}
+
+.oneBtn, .twoBtn, .threeBtn {
+  height: 50px;
+  width: 200px;
+  border-radius: 15px;
 }
 
 .back {
+  height: 35px;
   margin: 20px;
+  border-radius: 15px;
 }
 
 h2 {
@@ -97,15 +120,39 @@ h2 {
 }
 
 .projectHead {
+  display: flex;
+  flex-direction: column;
   text-align: center;
+  align-items: center;
+  justify-content: center;
   margin: 20px;
   border: 2px solid black;
-  background: blanchedalmond;
-  height: 50px;
-  width: 110px;
+  background:lightblue;
+  height: 300px;
+  width: 300px;
+  gap: 30px;
 }
 
 .noteCreate {
   margin-left: 30px;
   text-align: center;
+}
+
+.deleteBtn {
+  align-self: center;
+  height: 30px;
+  width: 180px;
+  border-radius: 15px;
+}
+
+.deleteNote {
+  align-self: center;
+  width: 180px;
+  height: 40px;
+  border-radius: 15px;
+  margin-top: 90px;
+}
+
+.projectRadio, .projectDesc {
+  margin: 0;
 }
