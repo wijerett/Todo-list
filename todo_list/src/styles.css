@@ -5,15 +5,13 @@ body {
   justify-content: center;
 }
 
-
-
 .block {
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  width: 25vw;
+  grid-template-columns: 2fr 1fr;
+  width: 30vw;
 }
 
-.titlebox, .desc, .create, .notes, .selectBox {
+.titlebox, .desc, .create, .selectBox {
   width: 200px;
   margin: 20px;
 }
@@ -40,28 +38,32 @@ label {
 
 .radLabel {
   display: flex;
-
 }
 
 #tiles {
   width: 100vw;
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
 }
 
 .post {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  
-  margin: 20px;
-  padding: 20px;
+  justify-content: space-between;
+  margin: 0;
+  padding: 15px;
   border: 2px solid black;
+  border-radius: 10px;
   background:blanchedalmond;
-  height: 280px;
-  width: 260px;
+  min-height: 220px;
+  height: auto;
+  width: 200px;
 }
 
 .noteDesc {
@@ -69,7 +71,6 @@ label {
   text-align: center;
   width: 200px;
   text-wrap: wrap;
-  padding: 15px;
 }
 
 .openBox {
@@ -84,6 +85,8 @@ label {
 #content {
   display: flex;
   flex-direction: column;
+  margin: 20px;
+  align-items: center;
 }
 
 .confirmBtn {
@@ -94,7 +97,8 @@ label {
 
 .openHead {
   text-align: center;
-  margin-bottom: 80px;
+  margin-bottom: 50px;
+  font-size: 300%;
 }
 
 .sticky {
@@ -118,6 +122,11 @@ label {
   border-radius: 15px;
 }
 
+.backBox {
+  margin-left: 20px;
+  align-self: flex-start;
+}
+
 h2 {
   margin: 10px;
 }
@@ -128,12 +137,35 @@ h2 {
   text-align: center;
   align-items: center;
   justify-content: center;
-  margin: 20px;
+  margin: 0;
+  border-right: 2px solid black;
+  background: darkgrey;
+  min-height: 300px;
+  width: 260px;
+  gap: 20px;
+  padding: 20px;
+
+  align-self: stretch;
+  height: auto;
+}
+
+.noteDiv {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 15px;
+  align-content: flex-start;
+  align-items: flex-start;
+}
+
+.project {
+  display: flex;
+  flex-direction: row;
   border: 2px solid black;
-  background:lightblue;
-  height: 300px;
-  width: 300px;
-  gap: 30px;
+  border-radius: 15px;
+  overflow: hidden;
+  align-items: flex-start;
 }
 
 .noteCreate {
@@ -143,24 +175,52 @@ h2 {
 
 .deleteBtn {
   align-self: center;
-  height: 30px;
-  width: 180px;
+  height: 35px;
+  width: 150px;
   border-radius: 15px;
+  border-radius: 15px;
+  margin-top: 0;
+  background: #e05555;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
 
 .deleteNote {
   align-self: center;
-  width: 180px;
-  height: 40px;
+  height: 35px;
+  width: 150px;
   border-radius: 15px;
-  margin-top: 90px;
+  margin-top: 15px;
+  background: #e05555;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
 
-.projectRadio, .projectDesc {
+.noteDate {
+  font-size: smaller;
+
+}
+
+.projectRadio {
   margin: 0;
+  font-weight: lighter;
+  font-size: small;
 }
 
 .notes {
   height: 100px;
-  padding: 0;
+  padding: 3px;
+  width: 250px;
+  margin: 20px;
+}
+
+#notesTwo {
+  height: 200px;
+  width: 300px;
+}
+
+:focus {
+  outline: none;
 }

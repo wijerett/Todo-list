@@ -13,25 +13,25 @@ export function loStore() {
     const projectDiv = document.createElement('div');
     projectDiv.classList.add('project');
 
-    const projectTitle = document.createElement('h3');
+    const projectTitle = document.createElement('h1');
     projectTitle.classList.add('projectHead');
     projectTitle.textContent = project.name;
     projectTitle.style.cursor = "pointer";
     projectDiv.appendChild(projectTitle);
 
+    const colorMap = {
+      "Top Priority": "green",
+      "Mid Priority": "yellow",
+      "Lowest Priority": "red"
+    };
+
     if (project.radioValue) {
       const radio = document.createElement('p');
       radio.classList.add('projectRadio');
       radio.textContent = project.radioValue;
+      radio.style.color = colorMap[project.radioValue];
       projectTitle.appendChild(radio);
     }
-
-    if (project.description) {
-      const desc = document.createElement('p');
-      desc.classList.add('projectDesc');
-      desc.textContent = project.description;
-      projectTitle.appendChild(desc);
-    };
 
     const deleteBtn = document.createElement('button');
     deleteBtn.textContent = "Delete Project";
@@ -55,8 +55,13 @@ export function loStore() {
 
     const p = document.createElement('p');
     p.classList.add('noteDesc');
-    p.textContent = note; // ✅ note is just a string now
+    p.textContent = note.text;
     postIt.appendChild(p);
+
+    const date = document.createElement('p');
+    date.classList.add('noteDate');
+    date.textContent = note.date;
+    postIt.appendChild(date);
 
     const deleteBtn = document.createElement('button');
     deleteBtn.textContent = "Delete Note";
@@ -84,7 +89,7 @@ export function loStore() {
     });
     }
     projectTitle.addEventListener('click', () => {
-      notesContainer.style.display = notesContainer.style.display === "none" ? "block" : "none";
+      notesContainer.style.display = notesContainer.style.display === "none" ? "flex" : "none";
     });
     projectDiv.appendChild(notesContainer);
     tiles.appendChild(projectDiv);

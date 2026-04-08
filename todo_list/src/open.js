@@ -56,6 +56,11 @@ export function loadOpen() {
   boxThree.classList.add('boxThree');
   boxThree.appendChild(threeBtn);
 
+  const footer = document.createElement('p');
+  footer.classList.add('openFoot');
+  footer.textContent = "Created by Jeremy Winnett";
+
+
 
 
   const openBox = document.createElement('div');
@@ -69,7 +74,9 @@ export function loadOpen() {
   content.appendChild(openContent);
 
 
+
   stickyPicture();
+  tiles.appendChild(footer);
 
 
 };

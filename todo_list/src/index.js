@@ -8,11 +8,6 @@ import { loStore } from "./storage.js";
 
 
 
-
-
-
-//loStore();
-
 window.addEventListener("DOMContentLoaded", () => {
   loadOpen();
 });

@@ -1,7 +1,6 @@
 import "./confirm.js";
 import { confirmButton } from "./confirm.js";
 import { loadOpen } from "./open.js";
-import { newTile } from "./tile.js";
 import "./getNotes.js";
 import { addToProject } from "./projects.js";
 
@@ -11,7 +10,7 @@ export function newBlock() {
 
   const noteCreate = document.createElement('h3');
   noteCreate.classList.add('noteCreate');
-  noteCreate.innerHTML = ("Create a new project name or use an existing project name to add a new note to that project");
+  noteCreate.innerHTML = ("Create a new project and add notes to it after project is created");
   
   const content = document.getElementById('content');
   const block = document.createElement('div');
@@ -26,15 +25,6 @@ export function newBlock() {
   titleLabel.textContent = "Project Title";
   block.appendChild(titleLabel);
 
-  const desc = document.createElement('input');
-  desc.classList.add('desc');
-  desc.setAttribute("id", "desc");
-  block.appendChild(desc);
-  const descLabel = document.createElement('label');
-  descLabel.setAttribute("for", "desc");
-  descLabel.textContent = "Project Description";
-  block.appendChild(descLabel);
-
   const priorityRad = document.createElement('div');
   priorityRad.classList.add('radioBox');
 
@@ -48,6 +38,7 @@ export function newBlock() {
   radOne.classList.add("radLabel");
   radOne.setAttribute("for", "priorityOne");
   radOne.textContent = "Top Priority";
+
   priorityRad.appendChild(radOne);
   
   const priorityTwo = document.createElement('input');
@@ -60,6 +51,7 @@ export function newBlock() {
   radTwo.classList.add("radLabel");
   radTwo.setAttribute("for", "priorityTwo");
   radTwo.textContent = "Second Priority";
+
   priorityRad.appendChild(radTwo);
 
   const priorityThree = document.createElement('input');
@@ -77,11 +69,12 @@ export function newBlock() {
   const confirmBtn = confirmButton();
   confirmBtn.addEventListener('click', () => {
     const projectName = titleBox.value.trim();
-    const description = desc.value.trim();
     
-    addToProject(projectName, null, null, description);
-    content.innerHTML = "";
-    loadOpen();
+    const success = addToProject(projectName, null, null, null);
+    if (success) {
+      content.innerHTML = "";
+      loadOpen();
+    }
   });
   
   content.appendChild(noteCreate);

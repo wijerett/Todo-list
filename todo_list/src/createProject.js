@@ -1,11 +1,9 @@
 import { addToProject } from "./projects.js";
-import { newTile } from "./tile.js";
 import { loadOpen } from "./open.js";
 import { confirmButton } from "./confirm.js";
-import { newNote } from "./noteCreate.js";
+import { getCurrentDate } from "./date.js";
 
 export function createNewProject() {
-
   //Create a new note
 
   const content = document.getElementById('content');
@@ -38,15 +36,18 @@ export function createNewProject() {
   notesLabel.textContent = "Note Description";
   block.appendChild(notesLabel);
 
-    const confirmBtn = confirmButton();
-    confirmBtn.addEventListener('click', () => {
-      const noteText = document.getElementById('notesTwo').value.trim();
-      const projectName = document.getElementById('selectBox').value.trim();
-      addToProject(projectName, null, [noteText], "");
-      //newTile();
+
+  const confirmBtn = confirmButton();
+  confirmBtn.addEventListener('click', () => {
+    const date = getCurrentDate();
+    const noteText = document.getElementById('notesTwo').value.trim();
+    const projectName = document.getElementById('selectBox').value.trim();
+    const success = addToProject(projectName, null, date, [noteText], "");
+    if (success) {
       content.innerHTML = "";
       loadOpen();
-    });
+    };
+  });
 
   content.appendChild(block);
   content.appendChild(confirmBtn);
