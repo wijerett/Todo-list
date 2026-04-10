@@ -13,8 +13,9 @@ export function addToProject(projectName, radioValue, date, noteValues) {
       return false;
     }
   }
+  //if project name field is empty i need an alert
 
-  if (!project) {
+  if (!projectName) {
     if (!checkedRadio) {
       alert('Please check a priority before confirming');
       return false;

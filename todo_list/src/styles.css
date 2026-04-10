@@ -1,5 +1,31 @@
+
+
+
+
+@font-face {
+  font-family: 'my-font';
+  src: url('./Cantarell-Regular.woff2') format('woff2'),
+      url('./Cantarell-Regular.woff') format('woff');
+      font-weight: 600;
+      font-style: normal;
+}
+
+@font-face {
+  font-family: 'pacifico';
+  src: url('./Pacifico.woff2') format('woff2'),
+      url('./Pacifico.woff') format('woff');
+      font-weight: 600;
+      font-style: normal;
+}
+
+
+
 body {
-  background: darkcyan;
+  background: url('./background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   display: grid;
   grid-auto-flow: row;
   justify-content: center;
@@ -8,18 +34,23 @@ body {
 .block {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  width: 30vw;
+  width: 25vw;
+  margin-bottom: 100px;
 }
 
 .titlebox, .desc, .create, .selectBox {
-  width: 200px;
+  width: 260px;
   margin: 20px;
+  background-color: cornflowerblue;
 }
+
+
 
 label {
   display: inline-block;
   width: 150px;
   padding: 22px;
+  color: firebrick;
 }
 
 .radioBox {
@@ -29,6 +60,8 @@ label {
   margin: 20px;
   border: 3px solid black;
   border-radius: 20px;
+  background-color: white;
+  padding: 10px;
 }
 
 .radio {
@@ -71,6 +104,7 @@ label {
   text-align: center;
   width: 200px;
   text-wrap: wrap;
+  font-family: "my-font", sans-serif;
 }
 
 .openBox {
@@ -80,6 +114,10 @@ label {
   justify-content: center;
   gap: 200px;
   margin-top: 20px;
+}
+
+.openFoot {
+  color: firebrick;
 }
 
 #content {
@@ -93,17 +131,27 @@ label {
   width: 100px;
   margin: 20px;
   border-radius: 15px;
+  align-self: center;
 }
 
 .openHead {
   text-align: center;
   margin-bottom: 50px;
   font-size: 300%;
+  color: firebrick;
+  font-family: 'pacifico', sans-serif;
+  font-size: 420%;
 }
 
 .sticky {
   margin: 60px;
   width: 35vw;
+}
+
+.notebook {
+  margin: 60px;
+  width: 35vw;
+  border-radius: 45px;
 }
 
 .boxOne, .boxTwo, .boxThree {
@@ -144,10 +192,12 @@ h2 {
   width: 260px;
   gap: 20px;
   padding: 20px;
-
   align-self: stretch;
   height: auto;
+  font-family: "my-font", sans-serif;
+  font-size: 60px;
 }
+
 
 .noteDiv {
   display: flex;
@@ -162,7 +212,7 @@ h2 {
 .project {
   display: flex;
   flex-direction: row;
-  border: 2px solid black;
+  border: 2px solid darkgrey;
   border-radius: 15px;
   overflow: hidden;
   align-items: flex-start;
@@ -170,7 +220,11 @@ h2 {
 
 .noteCreate {
   margin-left: 30px;
+  margin-bottom: 150px;
   text-align: center;
+  color: firebrick;
+  font-size: x-large;
+  font-family: 'my-font', sans-serif;
 }
 
 .deleteBtn {
@@ -184,6 +238,7 @@ h2 {
   color: white;
   border: none;
   cursor: pointer;
+  font-family: "my-font", sans-serif;
 }
 
 .deleteNote {
@@ -196,17 +251,19 @@ h2 {
   color: white;
   border: none;
   cursor: pointer;
+  font-family: "my-font", "sans-serif";
 }
 
 .noteDate {
   font-size: smaller;
-
+  font-family: "my-font", sans-serif;
 }
 
 .projectRadio {
   margin: 0;
   font-weight: lighter;
   font-size: small;
+  font-family: "my-font", sans-serif;
 }
 
 .notes {

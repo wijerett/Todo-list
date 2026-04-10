@@ -1,14 +1,20 @@
 import { newBlock } from "./home.js";
 import { loStore } from "./storage.js";
 import { openNotes } from "./gotonotes.js";
-import { stickyPicture } from "./sticky.js";
+import { stickyPicture, notebookPicture } from "./sticky.js";
 import { createNewProject } from "./createProject.js";
+import { notebook } from "./notebook.jpg";
 
 
 export function loadOpen() {
+
+  //background photo by Little Visuals
+  //notebook Anastasiya Badun
+  //other notebook Manuel Cortés
+
   const openHead = document.createElement('h2');
   openHead.classList.add('openHead');
-  openHead.innerHTML = "To-do List";
+  openHead.innerHTML = "Tackl List";
   
 
   const openContent = document.createElement('div');
@@ -74,8 +80,8 @@ export function loadOpen() {
   content.appendChild(openContent);
 
 
-
-  stickyPicture();
+  notebookPicture();
+  //stickyPicture();
   tiles.appendChild(footer);
 
 

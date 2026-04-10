@@ -1,4 +1,5 @@
 import cropsticky from "./cropsticky.jpg";
+import note from "./notebook.jpg";
 
 export function stickyPicture() {
   const tiles = document.getElementById('tiles');
@@ -7,3 +8,11 @@ export function stickyPicture() {
   mySticky.src = cropsticky;
   tiles.appendChild(mySticky);
 };
+
+export function notebookPicture() {
+  const tiles = document.getElementById('tiles');
+  const myNote = new Image();
+  myNote.classList.add('notebook');
+  myNote.src = note;
+  tiles.appendChild(myNote);
+}
